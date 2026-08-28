@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emberdeep — Dungeon Crawler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="torch-frame" aria-hidden="true"></div>
+
+  <main class="game-shell">
+
+    <!-- ===================== HUD / HEADER ===================== -->
+    <header class="hud">
+      <div class="hud-title">
+        <span class="ember">EMBER</span><span class="deep">DEEP</span>
+        <span class="subtitle">a descent into the dark</span>
+      </div>
+
+      <div class="hud-stats">
+        <div class="stat">
+          <span class="stat-label">Level</span>
+          <span class="stat-value" id="level-value">1</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Score</span>
+          <span class="stat-value" id="score-value">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Best</span>
+          <span class="stat-value" id="high-score-value">0</span>
+        </div>
+        <div class="stat hearts-stat">
+          <span class="stat-label">Health</span>
+          <span class="stat-value" id="hearts-value">❤️❤️❤️</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== GAME CANVAS ===================== -->
+    <div class="canvas-wrap">
+      <canvas id="game-canvas" width="640" height="480"></canvas>
+
+      <!-- Level transition banner -->
+      <div class="overlay level-banner hidden" id="level-banner">
+        <div class="banner-rule"></div>
+        <div class="banner-text">
+          <span class="banner-label">Descending to</span>
+          <span class="banner-level" id="banner-level-text">Level 2</span>
+        </div>
+        <div class="banner-rule"></div>
+      </div>
+
+      <!-- Game over overlay -->
+      <div class="overlay game-over hidden" id="game-over-screen">
+        <h2>You perished in the depths</h2>
+        <div class="go-stats">
+          <div><span class="go-label">Final Score</span><span class="go-value" id="final-score">0</span></div>
+          <div><span class="go-label">Level Reached</span><span class="go-value" id="final-level">1</span></div>
+          <div><span class="go-label">Best Score</span><span class="go-value" id="final-high-score">0</span></div>
+        </div>
+        <button id="restart-btn" class="torch-button">Light a new torch</button>
+      </div>
+    </div>
+
+    <!-- ===================== FOOTER / CONTROLS ===================== -->
+    <footer class="controls-bar">
+      <p><strong>Move:</strong> WASD or Arrow Keys &nbsp;•&nbsp; <strong>Goal:</strong> grab coins, avoid the dwellers, find the stairwell (◆). Your torch reveals nearby rooms; explored ground is remembered, but the dwellers only show up in the light.</p>
+      <div class="controls-buttons">
+        <button id="mute-btn" class="torch-button small icon-btn" aria-label="Mute sound">🔊</button>
+        <button id="restart-btn-inline" class="torch-button small">Restart</button>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
